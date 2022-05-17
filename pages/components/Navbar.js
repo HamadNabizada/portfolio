@@ -1,19 +1,30 @@
+import style from '../../styles/Navbar.module.css'
+import {useState} from 'react'
+
 export default function Navbar(){
+    let [toggle, setToggle] = useState(false)
 
-    let navMenu= (
-        <nav>
-            <ul>
-                <li>Home</li>
-                <li>About</li>
-                <li>Projects</li>
-                <li>Contact</li>
-            </ul>
-       </nav>
+    function toggleNav(){
+        setToggle(prevToggle=>!prevToggle)
+    }
+    let links = (     
+        <ul className={toggle ? style.navUl : style.navUlOff}>
+            <li className={style.linkItem}>About</li>
+            <li className={style.linkItem}>Projects</li>
+            <li className={style.linkItem}>Contact</li>
+        </ul>
     )
-
+    let menu = (
+        <div onClick={toggleNav} className={style.menuButton}>
+            <div className={style.menuLine}></div>
+            <div className={style.menuLine}></div>
+            <div className={style.menuLine}></div>
+        </div>
+    )
     return(
-        <>
-            {navMenu}
-        </>
+        <nav className={style.navWrapper}>
+            {menu}
+            {links}
+        </nav>
     )
 }
