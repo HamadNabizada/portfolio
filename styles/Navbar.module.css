@@ -4,7 +4,7 @@
     justify-content: center;
     margin-left:auto;
 }
-.navUl, .navUlOff{
+.navUl{
     display:flex;
     flex-direction: column;
     padding: 1rem 1.4rem;
@@ -12,10 +12,13 @@
     font-size: 1.5rem;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     border-radius: 10px;
-    transition: all 1s;
+    transition: all .2s;
+
 }
 .navUlOff{
-    display:none;
+    height: 0px;
+    overflow: hidden;
+    transition: all .2s;
 }
 .menuButton{
     cursor: pointer;
@@ -63,7 +66,19 @@
         display:none;
     }
     .navUl, .navUlOff{
+        display:flex;
+        flex-direction: column;
+        padding: 1rem 1.4rem;
+        background-color: #190835;
+        font-size: 1.5rem;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        border-radius: 10px;
+        transition: all .2s;
+    
+    }
+    .navUl, .navUlOff{
         flex-direction: row;
+        height:auto;
         display:flex;
         gap: 1rem;
         padding-right: 2rem;
