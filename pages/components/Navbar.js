@@ -16,9 +16,9 @@ export default function Navbar(){
     )
     let menu = (
         <div onClick={toggleNav} className={style.menuButton}>
-            <div className={style.menuLine}></div>
-            <div className={style.menuLine}></div>
-            <div className={style.menuLine}></div>
+            <div className={toggle ? style.menuClose1:style.menuLine}></div>
+            <div className={toggle ? style.menuClose2:style.menuLine}></div>
+            <div className={toggle ? style.menuClose3:style.menuLine}></div>
         </div>
     )
     return(

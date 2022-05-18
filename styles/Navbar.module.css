@@ -12,6 +12,7 @@
     font-size: 1.5rem;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     border-radius: 10px;
+    transition: all 1s;
 }
 .navUlOff{
     display:none;
@@ -29,6 +30,25 @@
 .menuLine{
     border-bottom: 1px solid white;
     width: 1rem;
+    transition: all .3s;
+}
+.menuClose1{
+    border-bottom: 1px solid white;
+    width: 1rem;
+    transform: translateY(.3rem) rotate(45deg);
+    transition: all .3s;
+}
+.menuClose2{
+    border-bottom: 1px solid white;
+    width: 1rem;
+    transform: rotate(-45deg);
+    transition: all .3s;
+}
+.menuClose3{
+    border-bottom: 1px solid none;
+    width: 1rem;
+    transform: translateY(-.3rem) rotate(45deg);
+    transition: all .3s;
 }
 .linkItem{
     cursor: pointer;
