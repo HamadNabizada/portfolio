@@ -1,0 +1,42 @@
+.wrapper{
+    color: white;
+    display:flex;
+    flex-direction: column;
+    font-weight:normal;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    gap: .2rem;
+}
+.h1Hero{
+    font-size:1.4rem;
+}
+.h2Hero{
+    font-weight: normal;
+    font-size:1rem;
+    color:gold;
+}
+.pHero{
+    font-size: .8rem;
+    margin-top: 1rem;
+    max-width:90%;
+}
+.links{
+    margin-top: .8rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+.btn{
+    border:none;
+    font-weight:normal;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 10px;
+    font-size: 1rem;
+    padding: .5rem 1.2rem;
+}
+.linkedin{
+    color:white;
+    background-color: #5093e2;
+}
