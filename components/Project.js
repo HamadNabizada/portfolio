@@ -9,7 +9,7 @@ export default function Project(props){
     function hoverOutEvent(){
         setIsHovered(false)
     }
-    let myOpacity= isHovered ? {opacity:'1'}: {opacity:'0'}
+    let myOpacity= isHovered ? {opacity:'2'}: {opacity:'0'}
     let backgroundOpacity= isHovered ? style.wrapper2Hover : style.wrapper2
     let myBackground = {
         backgroundImage:`url(${props.staticImg})`,
@@ -22,11 +22,17 @@ export default function Project(props){
         backgroundRepeat:'no-repeat'
     }
     let myStyle = isHovered ? myBackgroundHovered : myBackground
+    function goToLive(){
+        window.open(props.liveSite,'_blank')
+    }
+    function goToCode(){
+        window.open(props.githubCode,'_blank')
+    }
     return (
         <div style={myStyle} onMouseOver={hoverInEvent} onMouseOut={hoverOutEvent} className={style.wrapper} >
             <div className={backgroundOpacity}></div>
-            <button style={myOpacity} className={style.btn}>View live site</button>
-            <button style={myOpacity} className={style.btn}>View github code</button>
+            <button onClick={goToLive} style={myOpacity} className={style.btn}>View live site</button>
+            <button onClick={goToCode} style={myOpacity} className={style.btn}>View github code</button>
         </div>
     )
 }

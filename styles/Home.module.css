@@ -17,3 +17,36 @@
   font-weight:normal;
   font-size: 1rem;
 }
+.projectWrapper{
+  display:flex;
+  flex-direction: column;
+  gap: .4rem;
+}
+.myProjectTitle{
+  font-weight: normal;
+  font-size: 1.2rem;
+}
+.techWrapper{
+  display:flex;
+  flex-direction: row;
+  gap: .4rem;
+}
+.tech{
+  border: 1px solid white;
+  padding: .2rem;
+  border-radius: 5px;
+}
+.title{
+  display:flex;
+  align-items: flex-start;
+  flex-direction: row;
+  gap: .2rem;
+}
+.titleLink{
+  font-size: 1rem;
+  color:gold;
+  cursor: pointer;
+}
+.titleLink:hover{
+  font-size: 1.05rem;
+}
