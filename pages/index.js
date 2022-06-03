@@ -10,7 +10,7 @@ export default function Home(){
       <Hero />
       <div className={style.projects}>
         <h3>Check out my projects!</h3>
-        <Project />
+        <Project staticImg='/images/aiChatpic.png' gifImg='/images/aiChat.gif' />
       </div>
     </div>
   )
