@@ -27,16 +27,62 @@
     display: flex;
     flex-direction: row;
     gap: 1rem;
+    align-items: center;
+    justify-content: center;
 }
 .btn{
     border:none;
     font-weight:normal;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     border-radius: 10px;
-    font-size: 1rem;
-    padding: .5rem 1.2rem;
+    font-size: .6rem;
+    padding: .2rem .6rem;
+    color:black;
+    cursor: pointer;
+}
+.btn:active{
+    background-color: gray;
 }
 .linkedin{
     color:white;
-    background-color: #5093e2;
+    cursor: pointer;
+}
+.linkedin:active{
+    opacity: 85%;
+}
+.image{
+    width:1.2rem;
+    cursor: pointer;
+}
+.image:active{
+   opacity: .5;
+}
+.email{
+    cursor: pointer;
+}
+.email:active{
+    color:gray;
+}
+
+@media (min-width:700px){
+    .h1Hero{
+        font-size:2rem;
+    }
+    .h2Hero{
+        font-size:1.5rem;
+    }
+    .pHero{
+        font-size: 1.2rem;
+        margin-top: 1rem;
+        max-width:90%;
+    }
+    .btn{
+        font-size: 1rem;
+    }
+    .email{
+        font-size:2rem;
+    }
+    .image{
+        width:1.9rem;
+    }
 }
