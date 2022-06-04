@@ -23,8 +23,8 @@ export default function Home(){
           <div className={style.title}>
             <h4 className={style.myProjectTitle}>AI Chat app</h4>
             <div>
-              <a href='https://fun-with-ai-chat2.vercel.app/' target='_blank'><p className={style.titleLink}>&#8226; Live Site</p></a>
-              <a href='https://github.com/HamadNabizada/fun-with-ai' target='_blank'><p className={style.titleLink}>&#8226; Github Code</p></a>
+              <a href='https://fun-with-ai-chat2.vercel.app/' target='_blank' rel="noopener noreferrer"><p className={style.titleLink}>&#8226; Live Site</p></a>
+              <a href='https://github.com/HamadNabizada/fun-with-ai' target='_blank' rel="noopener noreferrer"><p className={style.titleLink}>&#8226; Github Code</p></a>
             </div>
           </div>
           <div className={style.techWrapper}>
@@ -46,7 +46,7 @@ export default function Home(){
               <Link href='/QuizGame'>
                 <a><p className={style.titleLink}>&#8226; Live Site</p></a>
               </Link>
-              <a href='https://github.com/HamadNabizada/fun-with-ai' target='_blank'><p className={style.titleLink}>&#8226; Github Code</p></a>
+              <a href='https://github.com/HamadNabizada/fun-with-ai' target='_blank' rel="noopener noreferrer"><p className={style.titleLink}>&#8226; Github Code</p></a>
             </div>
           </div>
           <div className={style.techWrapper}>
@@ -64,7 +64,7 @@ export default function Home(){
               <Link href='/Tenzies'>
                 <a><p className={style.titleLink}>&#8226; Live Site</p></a>
               </Link>
-              <a href='https://github.com/HamadNabizada/fun-with-ai' target='_blank'><p className={style.titleLink}>&#8226; Github Code</p></a>
+              <a href='https://github.com/HamadNabizada/fun-with-ai' target='_blank' rel="noopener noreferrer"><p className={style.titleLink}>&#8226; Github Code</p></a>
             </div>
           </div>
           <div className={style.techWrapper}>
