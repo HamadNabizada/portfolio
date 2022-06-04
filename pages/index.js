@@ -39,7 +39,10 @@ export default function Home(){
       <div className={style.projects}>
         {/* Quiz Game */}
         <div className={style.projectWrapper}> 
-          <Project />
+          <Project
+            staticImg='/images/loading.jpg'
+            gifImg='/images/loading.jpg' 
+          />
           <div className={style.title}>
             <h4 className={style.myProjectTitle}>Quiz Game</h4>
             <div>
@@ -57,7 +60,10 @@ export default function Home(){
         </div>
         {/* Tenzies */}
         <div className={style.projectWrapper}>
-          <Project />
+          <Project 
+            staticImg='/images/loading.jpg'
+            gifImg='/images/loading.jpg' 
+          />
           <div className={style.title}>
             <h4 className={style.myProjectTitle}>Tenzies</h4>
             <div>

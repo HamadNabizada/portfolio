@@ -14,12 +14,14 @@ export default function Project(props){
     let myBackground = {
         backgroundImage:`url(${props.staticImg})`,
         backgroundSize:'cover',
-        backgroundRepeat:'no-repeat'
+        backgroundRepeat:'no-repeat',
+        backgroundPosition: 'center'
     }
     let myBackgroundHovered = {
         backgroundImage:`url(${props.gifImg})`,
         backgroundSize:'cover',
-        backgroundRepeat:'no-repeat'
+        backgroundRepeat:'no-repeat',
+        backgroundPosition: 'center'
     }
     let myStyle = isHovered ? myBackgroundHovered : myBackground
     function goToLive(){
