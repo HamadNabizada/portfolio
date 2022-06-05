@@ -61,8 +61,8 @@ export default function Home(){
         {/* Tenzies */}
         <div className={style.projectWrapper}>
           <Project 
-            staticImg='/images/loading.jpg'
-            gifImg='/images/loading.jpg' 
+            staticImg='/images/tenziespic.png'
+            gifImg='/images/tenzies.gif' 
           />
           <div className={style.title}>
             <h4 className={style.myProjectTitle}>Tenzies</h4>
