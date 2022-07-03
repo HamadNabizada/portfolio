@@ -28,11 +28,19 @@
 .title{
     font-size: 2.5rem;
 }
+.diceWrapper{
+    margin-top: 1rem;
+    justify-content: center;
+    align-items: center;
+    display:grid;
+    grid-template: repeat(5, 1fr)/1fr 1fr;
+    gap: 1rem;
+}
 
 .btn{
     background-color: #5035ff;
     border:none;
-    padding: 1rem 2rem;
+    padding: .7rem 2rem;
     color:white;   
     font-family: 'Inter', sans-serif; 
     font-size: 2rem;
@@ -53,9 +61,14 @@
     }
     .btn{
         font-size: 3rem;
-        padding: 1.5rem 3rem;
+        padding: 1rem 3rem;
     }
     .title{
         font-size: 5rem;
+    }
+    .diceWrapper{
+        grid-template: 1fr 1fr/repeat(5, 1fr);
+        margin-top: 9rem;
+        gap: 4rem;
     }
 }
