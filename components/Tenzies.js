@@ -6,9 +6,9 @@ import { useState, useEffect } from 'react'
 
 export default function Tenzies(){
 
-    function get10RandomDie(){
+    function get10RandomDie(num){
         let randomTen = [];
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < num; i++) {
             let newnanoid = nanoid()
             let newDie = {
                 value: (Math.floor(Math.random() * 6)+1),
@@ -21,7 +21,7 @@ export default function Tenzies(){
         return randomTen
     }
 
-    let [diceSet, setDiceSet] = useState(get10RandomDie())
+    let [diceSet, setDiceSet] = useState(get10RandomDie(10))
     
     let dieElements = diceSet.map( item =>{
         return(
@@ -30,11 +30,26 @@ export default function Tenzies(){
                 key= {item.key}
                 id= {item.id}
                 isHeld= {item.isHeld}
+                handleClick={() => toggleHold(item.id)}
             />
         )
     } )
 
-    console.log(dieElements)
+    function getNewDice(){
+        setDiceSet( prevDiceSet => {
+            return get10RandomDie(10)
+        })
+    }
+
+    function toggleHold(id){
+        setDiceSet( prevDiceSet => {
+            let newDiceSet = prevDiceSet.map( item =>{
+                return id === item.id ? {...item, isHeld: !item.isHeld}:{...item}
+            })
+            return newDiceSet
+        })
+    }
+
     return(
         <div className={style.background}>
             <div className={style.wrapper}>
@@ -43,7 +58,7 @@ export default function Tenzies(){
                 <div className={style.diceWrapper}>
                     {dieElements}
                 </div>
-                <button className={style.btn}>Roll</button>
+                <button onClick={getNewDice} className={style.btn}>Roll</button>
             </div>
         </div>
     )
