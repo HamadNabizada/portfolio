@@ -22,6 +22,7 @@ export default function Tenzies(){
     }
 
     let [diceSet, setDiceSet] = useState(get10RandomDie(10))
+    let [gameOngoing, setGameOngoing] = useState(true)
     
     let dieElements = diceSet.map( item =>{
         return(
@@ -37,7 +38,10 @@ export default function Tenzies(){
 
     function getNewDice(){
         setDiceSet( prevDiceSet => {
-            return get10RandomDie(10)
+            let newDiceSet = prevDiceSet.map( item =>{
+                return item.isHeld ? item: get10RandomDie(1)[0]
+            })
+            return newDiceSet
         })
     }
 
@@ -48,7 +52,37 @@ export default function Tenzies(){
             })
             return newDiceSet
         })
+
     }
+
+    useEffect(() =>{
+        let checkIsHeld = true
+        let checkValue = true
+        diceSet.forEach( die =>{
+            !die.isHeld && (checkIsHeld = false )
+        })
+        if(checkIsHeld){
+            checkValue = checkAllValue(diceSet)
+            if(checkValue){
+                setGameOngoing(false)
+            }
+        }
+        
+    }, [diceSet])
+    function checkAllValue(diceSet){
+        let doNumMatch = true
+        let tempValue = diceSet[0].value
+        diceSet.forEach(die =>{
+            !(die.value === tempValue) && (doNumMatch = false)
+        })
+        return doNumMatch
+    }
+
+    function generateNewGame(){
+        setGameOngoing(true)
+        setDiceSet(get10RandomDie(10))
+    }
+
 
     return(
         <div className={style.background}>
@@ -58,7 +92,7 @@ export default function Tenzies(){
                 <div className={style.diceWrapper}>
                     {dieElements}
                 </div>
-                <button onClick={getNewDice} className={style.btn}>Roll</button>
+                <button onClick={gameOngoing ? getNewDice:generateNewGame} className={style.btn}>{gameOngoing? 'Roll':'New Game'}</button>
             </div>
         </div>
     )
