@@ -1,9 +1,9 @@
-import TenziesGame from '../components/TenziesGame'
-import style from '../styles/TenziesGame.module.css'
+import TenziesGame from '../components/Tenzies'
+
 
 export default function Tenzies(){
     return (
-        <div className={style.tenziesGameWrapper}>
+        <div>
             <TenziesGame />
         </div>
     )
