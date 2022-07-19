@@ -40,8 +40,11 @@ export default function Home(){
         {/* Quiz Game */}
         <div className={style.projectWrapper}> 
           <Project
+            isLocal='true'
             staticImg='/images/loading.jpg'
             gifImg='/images/loading.jpg' 
+            liveSite='/QuizGame'
+            githubCode='https://github.com/HamadNabizada/portfolio'
           />
           <div className={style.title}>
             <h4 className={style.myProjectTitle}>Quiz Game</h4>
@@ -49,34 +52,13 @@ export default function Home(){
               <Link href='/QuizGame'>
                 <a><p className={style.titleLink}>&#8226; Live Site</p></a>
               </Link>
-              <a href='https://github.com/HamadNabizada/fun-with-ai' target='_blank' rel="noopener noreferrer"><p className={style.titleLink}>&#8226; Github Code</p></a>
+              <a href='https://github.com/HamadNabizada/portfolio' target='_blank' rel="noopener noreferrer"><p className={style.titleLink}>&#8226; Github Code</p></a>
             </div>
           </div>
           <div className={style.techWrapper}>
             <p className={style.tech}>Javascript</p>
             <p className={style.tech}>React</p>
             <p className={style.tech}>CSS</p>
-          </div>
-        </div>
-        {/* Tenzies */}
-        <div className={style.projectWrapper}>
-          <Project 
-            staticImg='/images/tenziespic.png'
-            gifImg='/images/tenzies.gif' 
-          />
-          <div className={style.title}>
-            <h4 className={style.myProjectTitle}>Tenzies</h4>
-            <div>
-              <Link href='/Tenzies'>
-                <a><p className={style.titleLink}>&#8226; Live Site</p></a>
-              </Link>
-              <a href='https://github.com/HamadNabizada/fun-with-ai' target='_blank' rel="noopener noreferrer"><p className={style.titleLink}>&#8226; Github Code</p></a>
-            </div>
-          </div>
-          <div className={style.techWrapper}>
-            <p className={style.tech}>Javascript</p>
-            <p className={style.tech}>React</p>
-            <p className={style.tech}>Figma</p>
           </div>
         </div>
       </div>
