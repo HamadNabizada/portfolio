@@ -13,6 +13,7 @@
 .question{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight:normal;
+    padding: 1rem;
 }
 .answersWrapper{
     display:flex;
@@ -52,8 +53,11 @@
 @media screen and (max-width: 700px ){
     .wrapper{
         width: 90vw;
+        overflow: hidden;
+        margin-top:5rem;
     }
     .answersWrapper{
         flex-direction: column;
     }
+
 }
