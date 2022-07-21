@@ -3,6 +3,7 @@ import Header from '../../components/Header'
 import style from '../../styles/QuizStyles.module.css'
 import { useEffect, useState} from 'react'
 import QuizQuestion from '../../components/QuizQuestion'
+import {nanoid} from 'nanoid'
 
 export default function Quiz1(){
     let [currentStage, setCurrentStage] = useState('intro')
@@ -17,14 +18,30 @@ export default function Quiz1(){
         correct_answer: '',
         incorrect_answers: [],
         userSelection: '',
-        allPossibleAnswers:[]
+        allPossibleAnswers:[],
+        key: ''
      }])
+    let quizElements = myQuiz.map( item =>{
+        return <QuizQuestion 
+          key={item.key}
+          question={item.question}
+        />
+    })
+    function replaceWithSymbol(question){
+        let finalQuestion = question.replaceAll('&quot;', '"')
+        finalQuestion = finalQuestion.replaceAll('&#039;', "'")
+        finalQuestion = finalQuestion.replaceAll('&rsquo;', "'")
+        finalQuestion = finalQuestion.replaceAll('&ldquo;', '"')
+        finalQuestion = finalQuestion.replaceAll('&rdquo;', '"')
+        finalQuestion = finalQuestion.replaceAll('&hellip;', '...')
+        return finalQuestion
+    }
     let currentStageDisplay
     if (currentStage === 'intro'){
         currentStageDisplay = <IntroQuiz handleClick={fetchQuiz} title='General Knowledge' />
     }
     if (currentStage === 'quiz'){
-        currentStageDisplay = <QuizQuestion />
+        currentStageDisplay = quizElements
     }
     function createQuizElements(array){
         setMyQuiz(prevQuiz => {
@@ -33,23 +50,24 @@ export default function Quiz1(){
                 allAnswers.sort()
                 return (
                     {
-                        question: item.question,
+                        question: replaceWithSymbol(item.question),
                         correct_answer: item.correct_answer,
                         incorrect_answers: item.incorrect_answers,
                         userSelection: '',
-                        allPossibleAnswers:allAnswers
+                        allPossibleAnswers:allAnswers,
+                        key: nanoid()
                     }
                 )
             })
             return newQuiz
         })
     }
-    console.log(myQuiz);
+    
     // if (currentStage === 'result'){
     //     currentStageDisplay = //enter logic here
     // }
     async function fetchQuiz(){
-        let response = await fetch('https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple')
+        let response = await fetch('https://opentdb.com/api.php?amount=10&category=9&type=multiple')
         let data = await response.json()
         setQuizArray(data.results)
         setCurrentStage('quiz')
