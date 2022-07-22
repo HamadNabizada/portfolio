@@ -6,10 +6,10 @@ export default function QuizQuestion(props){
         <div className={style.wrapper}>
             <h1 className={style.question} >{props.question}</h1>
             <section className={style.answersWrapper}>
-                <button className={style.answerBtn}>Answer 1</button>
-                <button className={style.answerBtn}>Answer 1</button>
-                <button className={style.answerBtn}>Answer 1</button>
-                <button className={style.answerBtn}>Answer 1</button>
+                <button onClick={props.handleClick} className={style.answerBtn}>{props.allPossibleAnswers[0]}</button>
+                <button onClick={props.handleClick} className={style.answerBtn}>{props.allPossibleAnswers[1]}</button>
+                <button onClick={props.handleClick} className={style.answerBtn}>{props.allPossibleAnswers[2]}</button>
+                <button onClick={props.handleClick} className={style.answerBtn}>{props.allPossibleAnswers[3]}</button>
             </section>
         </div>
     )
