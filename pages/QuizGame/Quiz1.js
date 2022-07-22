@@ -4,9 +4,11 @@ import style from '../../styles/QuizStyles.module.css'
 import { useEffect, useState} from 'react'
 import QuizQuestion from '../../components/QuizQuestion'
 import {nanoid} from 'nanoid'
+import QuizEnd from '../../components/QuizEnd'
 
 export default function Quiz1(){
     let [questionCounter, setQuestionCounter] = useState(0)
+    let [correctCounter, setCorrectCounter] = useState(0)
     let [currentStage, setCurrentStage] = useState('intro')
     let [quizArray, setQuizArray] = useState([{
         question: '',
@@ -26,6 +28,7 @@ export default function Quiz1(){
         return <QuizQuestion 
           key={item.key}
           question={item.question}
+          answer={item.correct_answer}
           allPossibleAnswers={item.allPossibleAnswers}
           handleClick={userClickAnswer}
         />
@@ -47,7 +50,7 @@ export default function Quiz1(){
         currentStageDisplay = quizElements[questionCounter]
     }
     if (currentStage === 'result'){
-        currentStageDisplay = <h1>END</h1>
+        currentStageDisplay = <QuizEnd totalCorrect={correctCounter} />
     }
     function createQuizElements(array){
         setMyQuiz(prevQuiz => {
@@ -71,26 +74,33 @@ export default function Quiz1(){
             return newQuiz
         })
     }
-
+    function checkAnswers(){
+        let counter=0
+        myQuiz.forEach(item=>{
+            if(item.correct_answer === item.userSelection){
+                counter = counter + 1
+            }
+        })
+        return counter
+    }
     function userClickAnswer(e){
-        console.log(myQuiz)
         setMyQuiz(prevMyQuiz =>{
             let newQuiz= prevMyQuiz.map(item=>{
                 return {...item}
             })
             newQuiz[questionCounter].userSelection = e.target.innerHTML
-            console.log(newQuiz)
             return newQuiz
         })
-        
         setQuestionCounter(prevQuestionCounter=>{
-            let counter = prevQuestionCounter +1
+            let counter = prevQuestionCounter + 1
+            if(questionCounter === 10){
+                console.log(myQuiz)
+                let totalCorrect = checkAnswers()
+                setCorrectCounter(totalCorrect)
+                setCurrentStage('result')
+            }
             return counter
         })
-        if(questionCounter === 9){
-            console.log('END');
-            setCurrentStage('result')
-        }
     }
     
     async function fetchQuiz(){
