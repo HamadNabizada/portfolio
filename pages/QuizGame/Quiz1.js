@@ -40,6 +40,7 @@ export default function Quiz1(){
         finalQuestion = finalQuestion.replaceAll('&ldquo;', '"')
         finalQuestion = finalQuestion.replaceAll('&rdquo;', '"')
         finalQuestion = finalQuestion.replaceAll('&hellip;', '...')
+        finalQuestion = finalQuestion.replaceAll('&shy;', '-')
         return finalQuestion
     }
     let currentStageDisplay
@@ -84,23 +85,25 @@ export default function Quiz1(){
         return counter
     }
     function userClickAnswer(e){
+        console.log(`initial counter: ${questionCounter}`)
         setMyQuiz(prevMyQuiz =>{
             let newQuiz= prevMyQuiz.map(item=>{
                 return {...item}
             })
             newQuiz[questionCounter].userSelection = e.target.innerHTML
+            setQuestionCounter(prevQuestionCounter=>{
+                let counter = prevQuestionCounter + 1
+                if(questionCounter === 10){
+                    console.log(myQuiz)
+                    // let totalCorrect = checkAnswers()
+                    // setCorrectCounter(totalCorrect)
+                    // setCurrentStage('result')
+                }
+                return counter
+            })
             return newQuiz
         })
-        setQuestionCounter(prevQuestionCounter=>{
-            let counter = prevQuestionCounter + 1
-            if(questionCounter === 10){
-                console.log(myQuiz)
-                let totalCorrect = checkAnswers()
-                setCorrectCounter(totalCorrect)
-                setCurrentStage('result')
-            }
-            return counter
-        })
+        console.log(`updated counter: ${questionCounter}`)
     }
     
     async function fetchQuiz(){
