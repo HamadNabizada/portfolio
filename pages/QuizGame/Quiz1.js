@@ -8,6 +8,7 @@ import QuizEnd from '../../components/QuizEnd'
 
 export default function Quiz1(){
     let [questionCounter, setQuestionCounter] = useState(0)
+    let [myEvent, setMyEvent] = useState('')
     let [correctCounter, setCorrectCounter] = useState(0)
     let [currentStage, setCurrentStage] = useState('intro')
     let [quizArray, setQuizArray] = useState([{
@@ -22,7 +23,8 @@ export default function Quiz1(){
         incorrect_answers: [],
         userSelection: '',
         allPossibleAnswers:[],
-        key: ''
+        key: '',
+        isCorrect: false
      }])
     let quizElements = myQuiz.map( item =>{
         return <QuizQuestion 
@@ -41,6 +43,11 @@ export default function Quiz1(){
         finalQuestion = finalQuestion.replaceAll('&rdquo;', '"')
         finalQuestion = finalQuestion.replaceAll('&hellip;', '...')
         finalQuestion = finalQuestion.replaceAll('&shy;', '-')
+        finalQuestion = finalQuestion.replaceAll('&amp;oacute;', 'ó')
+        finalQuestion = finalQuestion.replaceAll('&ouml;', 'ö')
+        finalQuestion = finalQuestion.replaceAll('&aring;', 'å')
+        finalQuestion = finalQuestion.replaceAll('&auml;', 'ä')
+        finalQuestion = finalQuestion.replaceAll('&Eacute;', 'É')
         return finalQuestion
     }
     let currentStageDisplay
@@ -75,37 +82,64 @@ export default function Quiz1(){
             return newQuiz
         })
     }
-    function checkAnswers(){
+    function checkAllAnswers(array){
         let counter=0
         myQuiz.forEach(item=>{
-            if(item.correct_answer === item.userSelection){
+            if(item.isCorrect){
                 counter = counter + 1
             }
         })
         return counter
     }
+    function checkSingleAnswer(question){
+        if(question.userSelection === question.correct_answer){
+            return true
+        }
+        else return false
+    }
     function userClickAnswer(e){
-        console.log(`initial counter: ${questionCounter}`)
+        setMyEvent(e)
+    }
+    useEffect(()=>{
+        if(myEvent !== ''){
+            updateQuestionCounter()
+        }
+    },[myEvent])
+    useEffect(()=>{
+        if(questionCounter !== 0 && questionCounter < 10){
+            updateMyQuiz(myEvent)
+        }
+        if(questionCounter === 10){
+            updateMyQuiz(myEvent)
+            setCurrentStage('result')
+        }
+    },[questionCounter])
+    function updateQuestionCounter(){
+        setQuestionCounter(prevQuestionCounter=>{
+            let counter = prevQuestionCounter + 1
+            return counter
+        })
+    }
+    function findResults(){
+        let totalCorrect = checkAllAnswers(myQuiz)
+        setCorrectCounter(totalCorrect)
+    }
+    useEffect(()=>{
+        if(currentStage === 'result'){
+            findResults()
+        }
+    },[currentStage])
+    function updateMyQuiz(e){
         setMyQuiz(prevMyQuiz =>{
             let newQuiz= prevMyQuiz.map(item=>{
                 return {...item}
             })
-            newQuiz[questionCounter].userSelection = e.target.innerHTML
-            setQuestionCounter(prevQuestionCounter=>{
-                let counter = prevQuestionCounter + 1
-                if(questionCounter === 10){
-                    console.log(myQuiz)
-                    // let totalCorrect = checkAnswers()
-                    // setCorrectCounter(totalCorrect)
-                    // setCurrentStage('result')
-                }
-                return counter
-            })
+            newQuiz[questionCounter-1].userSelection = e.target.innerHTML
+            newQuiz[questionCounter-1].isCorrect = checkSingleAnswer(newQuiz[questionCounter-1])
             return newQuiz
         })
-        console.log(`updated counter: ${questionCounter}`)
     }
-    
+
     async function fetchQuiz(){
         let response = await fetch('https://opentdb.com/api.php?amount=10&category=9&type=multiple')
         let data = await response.json()
