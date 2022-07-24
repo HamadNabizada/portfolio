@@ -9,7 +9,7 @@ export default function Navbar(){
     }
     let links = (     
         <ul className={toggle ? style.navUl : style.navUlOff}>
-            <li className={style.linkItem}>Home</li>
+            <a href='/'><li className={style.linkItem}>Home</li></a>
             <li className={style.linkItem}>Projects</li>
             <li className={style.linkItem}>Contact</li>
         </ul>

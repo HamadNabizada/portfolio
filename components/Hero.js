@@ -10,8 +10,8 @@ export default function Hero(){
             <h1 className={style.h1Hero}>Hamad Nabizada</h1>
             <h2 className={style.h2Hero}>Frontend Developer</h2>
             <div className={style.links}>
-                <a href='#'><button className={style.btn}>Resume</button></a>
-                <a href='#'><FontAwesomeIcon className={style.email} icon={faEnvelope}/></a>
+                {/* <a href='#'><button className={style.btn}>Resume</button></a>
+                <a href='#'><FontAwesomeIcon className={style.email} icon={faEnvelope}/></a> */}
                 <a href='https://github.com/HamadNabizada'><img className={style.image} src="/images/githubLogo.png" alt="Github Logo" /></a>
                 <a href='https://www.linkedin.com/in/hamad-nabizada/'><img className={style.image} src="/images/linkedin.png" alt="Linkedin Logo" /></a>
             </div>
