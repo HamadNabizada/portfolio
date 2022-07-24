@@ -58,7 +58,7 @@ export default function Quiz1(){
         currentStageDisplay = quizElements[questionCounter]
     }
     if (currentStage === 'result'){
-        currentStageDisplay = <QuizEnd totalCorrect={correctCounter} />
+        currentStageDisplay = <QuizEnd url='Quiz1' totalCorrect={correctCounter} />
     }
     function createQuizElements(array){
         setMyQuiz(prevQuiz => {
@@ -150,8 +150,6 @@ export default function Quiz1(){
     useEffect(()=>{
         createQuizElements(quizArray)
     },[quizArray])
-    
-
     return (
         <div className={style.wrapper}>
             <Header />
