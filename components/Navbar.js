@@ -1,5 +1,6 @@
 import style from '../styles/Navbar.module.css'
 import {useState} from 'react'
+import Link from 'next/link'
 
 export default function Navbar(){
     let [toggle, setToggle] = useState(false)
@@ -9,7 +10,7 @@ export default function Navbar(){
     }
     let links = (     
         <ul className={toggle ? style.navUl : style.navUlOff}>
-            <a href='/'><li className={style.linkItem}>Home</li></a>
+            <li className={style.linkItem}><Link href="/"><a>Home</a></Link></li>
             <li className={style.linkItem}>Projects</li>
             <li className={style.linkItem}>Contact</li>
         </ul>
