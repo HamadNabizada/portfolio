@@ -33,10 +33,6 @@ export default function Home(){
             <p className={style.tech}>NextJS</p>
           </div>
         </div>
-      </div>
-      <h3 className={style.projectWrapperTitle}><span className={style.star}>&#9733;</span> Play a quick game! <span className={style.star}>&#9733;</span></h3>
-      {/* Game List */}
-      <div className={style.projects}>
         {/* Quiz Game */}
         <div className={style.projectWrapper}> 
           <Project
